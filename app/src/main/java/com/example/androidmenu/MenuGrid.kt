@@ -34,8 +34,8 @@ fun MenuGrid(){
     Column(modifier=Modifier.verticalScroll(rememberScrollState())) {
         repeat(10){
             Row (modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ){
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ){
                 GridCell()
             }
         }
@@ -43,16 +43,63 @@ fun MenuGrid(){
 }
 
 @Composable
-fun GridCell(){
-    Card(elevation = CardDefaults.cardElevation(defaultElevation = 8.dp), modifier = Modifier.padding(8.dp))
+fun GridCell() {
+    Card(
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+        modifier = Modifier.padding(8.dp)
+    )
     {
-        Box(modifier = Modifier
-            .fillMaxWidth()
-            .padding(1.dp)
-            .background(Color(0XFFFFFFFF))
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(1.dp)
+                .background(Color(0XFFFFFFFF))
         )
         {
-            // Start Making your card over here
+            Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+                modifier = Modifier.padding(8.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color(0xFFFFFFFF))
+                        .padding(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(end = 8.dp)
+                    ) {
+                        Text(
+                            text = "Greek Salad",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(bottom = 4.dp)
+                        )
+                        Text(
+                            text = "A traditional Greek salad consists of sliced cucumbers, tomatoes, green bell pepper, red onion, olives, and feta cheese.",
+                            fontSize = 14.sp,
+                            color = Color.Gray,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                        Text(
+                            text = "$12.5",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+                    }
+                    Image(
+                        painter = painterResource(id = R.drawable.greeksalad),
+                        contentDescription = "Greek Salad Image",
+                        modifier = Modifier
+                            .size(80.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                    )
+                }
+            }
         }
     }
 }
@@ -62,4 +109,3 @@ fun GridCell(){
 fun GridCellPreview(){
     MenuGrid()
 }
-
